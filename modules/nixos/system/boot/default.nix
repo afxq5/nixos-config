@@ -11,13 +11,22 @@ in {
   config = mkIf cfg.enable {
     # Bootloader.
     boot.loader.efi.canTouchEfiVariables = true;
-    boot.loader.efi.efiSysMountPoint = "/boot/efi";
+    boot.loader.efi.efiSysMountPoint = "/boot";
+    
     boot.loader.grub = {
       enable = true;
       device = "nodev";
       efiSupport = true;
-      enableCryptodisk = true;
       useOSProber = true;
+      extraEntriesBeforeNixOS = true;
+      extraEntries = ''
+        menuentry "Reboot" {
+          reboot
+        }
+        menuentry "Poweroff" {
+          halt
+        }
+      '';
     };
     boot.plymouth = { enable = true; };
     # for build raspberry pi image 
