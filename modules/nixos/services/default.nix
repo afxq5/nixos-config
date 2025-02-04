@@ -44,14 +44,9 @@ in {
     services.libinput.enable = true;
     services.xserver = {
       enable = true;
-      displayManager.gdm = { enable = true; };
     };
     services.displayManager = {
-      autoLogin = {
-        enable = true;
-        user = "afxq";
-      };
-      # sddm = { enable = true; };
+      sddm = { enable = true; };
     };
     services.gvfs.enable = true;
     services.acpid.enable = true;

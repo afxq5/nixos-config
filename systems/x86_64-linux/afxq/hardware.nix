@@ -11,15 +11,19 @@
   boot.plymouth.enable = true;
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/9777f002-d3b2-42b9-ab41-4f5b4b3294ff";
+    { device = "/dev/disk/by-uuid/d19adcc4-2c06-4e64-8cbe-d7fef051baf7";
       fsType = "ext4";
     };
 
-  fileSystems."/boot/efi" =
-    { device = "/dev/disk/by-uuid/0362-0A8E";
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/7A09-3925";
       fsType = "vfat";
+      options = [ "fmask=0077" "dmask=0077" ];
     };
-  swapDevices = [ ];
+
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/767f24ba-42d3-4779-9e67-f36d4524ef3b"; }
+    ];
   # virtualisation.docker.enable = true;
   # virtualisation.libvirtd.enable = true;
   #  hardware.pulseaudio.enable = true;

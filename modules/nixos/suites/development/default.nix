@@ -5,12 +5,12 @@ let
   cfg = config.afxq.suites.development;
   apps = {
     # docker = enabled;
-    #drawio = enabled;
+    # drawio = enabled;
     # neovide = enabled;
     # lapce = enabled;
-    emacs = enabled;
+    # emacs = enabled;
     tmux = enabled;
-    # vscode = enabled;
+    vscode = enabled;
     # surrealdb = enabled;
     postgres = enabled;
   };
@@ -34,20 +34,20 @@ in
       inherit apps cli-apps;
 
       develop = {
-        assembly = enabled;
+        # assembly = enabled;
         binary = enabled;
         build = enabled;
-        c_cpp = enabled;
+        #c_cpp = enabled;
         c_cpp_libs = enabled;
-        embdedded = {
-          enable = true;
-          esp = enabled;
-        };
+        #embdedded = {
+        #  enable = true;
+        #  esp = enabled;
+        #};
         javascript = enabled;
-        lisp = enabled;
-        lua = enabled;
+        #lisp = enabled;
+        #lua = enabled;
         python = enabled;
-        rust = enabled;
+        #rust = enabled;
         web = enabled;
         database = enabled;
       };

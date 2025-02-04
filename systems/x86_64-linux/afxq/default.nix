@@ -9,7 +9,7 @@ with lib.afxq; {
   afxq = {
     archetypes = {
       workstation = enabled;
-      gaming = enabled;
+      # gaming = enabled;
     };
 
     #   hardware.audio = {

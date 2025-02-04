@@ -12,17 +12,7 @@ in {
   config = mkIf cfg.enable {
     afxq = {
       desktop = {
-        # exwm = enabled;
-        # hyprland = enabled;
-        i3wm = enabled;
-        sway = enabled;
-        # enlightenment = enabled;
-        # awesomewm = enabled;
-        # cde = enabled;
-        #addons = {
-        #   wallpapers = enabled;
-        #    rofi = enabled;
-        # };
+        plasma = enabled;
       };
 
       apps = {

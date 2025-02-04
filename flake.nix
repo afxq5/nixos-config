@@ -8,7 +8,7 @@
     # NixPkgs Unstable (nixos-unstable)
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     kmyc = {
-      url = "github:afxq/kde-material-you-colors-flake";
+      url = "github:amaali7/kde-material-you-colors-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # Lix
@@ -82,7 +82,7 @@
     nix-ld.inputs.nixpkgs.follows = "unstable";
 
     # Neovim
-    neovim.url = "github:afxq/nixvim";
+    neovim.url = "github:amaali7/nixvim";
     neovim.inputs.nixpkgs.follows = "unstable";
 
     # Tmux
@@ -199,7 +199,7 @@
         # exists and can force override environment files.
         # attic.nixosModules.atticd
       ];
-      systems.hosts.laptop.modules = with inputs;
+      systems.hosts.afxq.modules = with inputs;
         [
           nixos-hardware.nixosModules.dell-latitude-7390
         ];
