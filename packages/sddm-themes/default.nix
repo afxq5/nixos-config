@@ -2,13 +2,13 @@
 with lib.afxq;
 let
   theme = rec {
-    name = "sugar-dark";
-    version = "1.2";
+    name = "abstractdark";
+    version = "20161002";
     src = pkgs.fetchFromGitHub {
-      owner = "MarianArlt";
-      repo = "sddm-${name}";
-      rev = "v${version}";
-      sha256 = "0gx0am7vq1ywaw2rm1p015x90b75ccqxnb1sz3wy8yjl27v82yhb";
+      owner = "3ximus";
+      repo = "${name}-sddm-theme";
+      rev = "e817d4b27981080cd3b398fe928619ffa16c52e7";
+      sha256 = "1si141hnp4lr43q36mbl3anlx0a81r8nqlahz3n3l7zmrxb56s2y";
     };
     deps = with pkgs; [ ];
     inherit pkgs;
