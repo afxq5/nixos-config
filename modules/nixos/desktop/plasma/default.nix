@@ -8,7 +8,9 @@ in {
   };
 
   config = mkIf cfg.enable {
-    services.desktopManager.plasma6.enable = true;
-
+    services.desktopManager.plasma6 = {
+      enable = true;
+      enableQt5Integration = true;
+    };
   };
 }
