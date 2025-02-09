@@ -9,6 +9,7 @@ with lib.${namespace}; {
     apps = {
       # hyprland = enabled;
       i3status = enabled;
+      themes = enabled;
     };
     cli-apps = {
       home-manager = enabled;

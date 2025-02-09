@@ -52,6 +52,7 @@ in {
           pkgs.afxq.sddm-themes
         ];
         theme = "abstractdark";
+        # theme = pkgs.afxq.sddm-themes;
       };
     };
     services.gvfs.enable = true;
