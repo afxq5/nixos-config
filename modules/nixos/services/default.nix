@@ -42,11 +42,17 @@ in {
     services.postgresql.enable = true;
     services.teamviewer.enable = true;
     services.libinput.enable = true;
-    services.xserver = {
-      enable = true;
-    };
+    services.xserver = { enable = true; };
     services.displayManager = {
-      sddm = { enable = true; };
+      sddm = {
+        enable = true;
+        package = pkgs.lib.mkForce pkgs.libsForQt5.sddm;
+        extraPackages = pkgs.lib.mkForce [
+          pkgs.libsForQt5.qt5.qtgraphicaleffects
+          pkgs.afxq.sddm-themes
+        ];
+        theme = "abstractdark";
+      };
     };
     services.gvfs.enable = true;
     services.acpid.enable = true;

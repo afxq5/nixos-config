@@ -9,7 +9,6 @@ in {
 
   config = mkIf cfg.enable {
     services.desktopManager.plasma6.enable = true;
-    services.displayManager.sddm.theme = "abstractdark";
-    environment.systemPackages = with pkgs.afxq; [ sddm-themes ];
+
   };
 }
