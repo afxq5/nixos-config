@@ -13,6 +13,7 @@ in {
     afxq = {
       desktop = {
         plasma = enabled;
+        hyprland = enabled;
       };
 
       apps = {

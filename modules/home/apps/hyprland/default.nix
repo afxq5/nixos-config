@@ -1,81 +1,46 @@
 { lib, pkgs, config, inputs, ... }:
 
 let
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) mkEnableOption mkIf mkForce;
   inherit (lib.afxq) enabled;
+  user = config.afxq.user;
+  homeD = if user.name == null then null else "/home/${user.name}";
 
   cfg = config.afxq.apps.hyprland;
 in {
   options.afxq.apps.hyprland = { enable = mkEnableOption "Hyprland"; };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [
-      libsForQt5.polkit-kde-agent
-      libsForQt5.qt5ct
-      qt6Packages.qt6ct
-      libsForQt5.dolphin
-      gammastep
-      bc
-      libsForQt5.systemsettings
-      fish
-      gnome.gnome-bluetooth
-      strawberry
-      nwg-look
-      blueman
-      qt6Packages.qtstyleplugin-kvantum
-      libsForQt5.qtstyleplugin-kvantum
-      libsForQt5.konsole
-      libsForQt5.plasma-workspace
-      libsForQt5.kconfig
-      glib
-      gsettings-qt
-      bun
-      # ------
-      foot
-      grim
-      slurp
-      swww
-      fish
-      light
-      swaylock-effects
-      swayidle
-      theme-sh
-      xdg-desktop-portal-hyprland
-      starship
-      cava
-      imagemagick
-      gnome.gnome-bluetooth
-      libdbusmenu-gtk3
-      wl-clipboard
-      # ------
-      wofi
-      swaybg
-      wlsunset
-
-      wl-gammactl
-      wl-clipboard
-      wf-recorder
-      hyprpicker
-      imagemagick
-      hyprpaper
-      slurp
-      kitty
-      sassc
-      watershot
-
-      hyprland
-      hyprland-protocols
-      # hyprland-share-picker
-      xdg-desktop-portal-hyprland
-      wlprop
-      inputs.hyprland-contrib.packages.${pkgs.system}.hyprprop
-      # inputs.kmyc.defaultPackage.${pkgs.system}
-    ];
-    wayland.windowManager.hyprland = {
-      enable = true;
-      xwayland = enabled;
-      # plugins =
-      #   [ inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars ];
-    };
+    qt.enable = true;
+    qt.platformTheme.name = "qtct";
+    # home.file."${config.xdg.configHome}" = {
+    #   source = config.lib.file.mkOutOfStoreSymlink "${homeD}/.dotfiles/config/";
+    #   recursive = true;
+    # };
+    # home.file.".local" = {
+    #   source = config.lib.file.mkOutOfStoreSymlink "${homeD}/.dotfiles/local/";
+    #   recursive = true;
+    # };
+    # home.file.".fonts" = {
+    #   source = config.lib.file.mkOutOfStoreSymlink "${homeD}/.dotfiles/fonts/";
+    #   recursive = true;
+    # };
+    home.activation.linkMyFiles =
+      config.lib.dag.entryAfter [ "writeBoundary" ] ''
+        # Config
+        ln -snf $HOME/.dotfiles/config/hypr/ $HOME/.config/hypr
+        ln -snf $HOME/.dotfiles/config/ags/ $HOME/.config/ags
+        ln -snf $HOME/.dotfiles/config/easyeffects/ $HOME/.config/easyeffects
+        ln -snf $HOME/.dotfiles/config/Kvantum/ $HOME/.config/Kvantum
+        ln -snf $HOME/.dotfiles/config/qt5ct/ $HOME/.config/qt5ct
+        ln -snf $HOME/.dotfiles/config/qt6ct/ $HOME/.config/qt6ct
+        ln -snf $HOME/.dotfiles/config/wofi/ $HOME/.config/wofi
+        ln -snf $HOME/.dotfiles/config/gammastep.conf $HOME/.config/gammastep.conf
+        # Local
+        ln -snf $HOME/.dotfiles/local/share/konsole/ $HOME/.local/share/konsole
+        ln -snf $HOME/.dotfiles/local/share/color-schemes/ $HOME/.local/share/color-schemes
+        # Fonts
+        ln -snf $HOME/.dotfiles/fonts/ $HOME/.fonts
+      '';
   };
 }

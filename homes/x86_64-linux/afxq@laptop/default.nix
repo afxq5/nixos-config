@@ -7,7 +7,7 @@ with lib.${namespace}; {
       name = "afxq";
     };
     apps = {
-      # hyprland = enabled;
+      hyprland = enabled;
       i3status = enabled;
       themes = enabled;
     };
