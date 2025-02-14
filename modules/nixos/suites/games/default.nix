@@ -5,10 +5,10 @@ with lib.afxq;
 let
   cfg = config.afxq.suites.games;
   apps = {
-    # openra = enabled;
+    openra = enabled;
     aisleriot = enabled;
     xonotic = enabled;
-    # retroarch = enabled;
+    retroarch = enabled;
   };
 in {
   options.afxq.suites.games = with types; {
