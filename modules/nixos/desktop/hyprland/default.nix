@@ -32,6 +32,7 @@ in {
       nwg-look
       blueman
       # qt6Packages.qtstyleplugin-kvantum
+      libsForQt5.kconfig
       kdePackages.qtstyleplugin-kvantum
       kdePackages.konsole
       kdePackages.plasma-workspace
