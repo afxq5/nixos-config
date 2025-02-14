@@ -60,7 +60,7 @@ in {
       wofi
       swaybg
       wlsunset
-
+      brightnessctl
       wl-gammactl
       wl-clipboard
       wf-recorder
