@@ -37,6 +37,7 @@ in {
       kdePackages.konsole
       kdePackages.plasma-workspace
       kdePackages.kconfig
+      python312Packages.pillow
       glib
       gsettings-qt
       bun
