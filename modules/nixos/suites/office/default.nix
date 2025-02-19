@@ -11,6 +11,11 @@ in {
   config = mkIf cfg.enable {
     # environment.systemPackages = [ pkgs.afxq.list-iommu ];
 
-    afxq = { apps = { libreoffice = enabled; }; };
+    afxq = {
+      apps = {
+        libreoffice = enabled;
+        teams-for-linux = enabled;
+      };
+    };
   };
 }
