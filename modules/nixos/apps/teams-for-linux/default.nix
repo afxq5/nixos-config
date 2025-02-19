@@ -1,4 +1,4 @@
-{ options, inputs, config, lib, pkgs, ... }:
+i{ options, inputs, config, lib, pkgs, ... }:
 with lib;
 with lib.afxq;
 let cfg = config.afxq.apps.teams-for-linux;
@@ -8,5 +8,5 @@ in {
   };
 
   config =
-    mkIf cfg.enable { environment.systemPackages = [ teams-for-linux ]; };
+    mkIf cfg.enable { environment.systemPackages = with pkgs; [ teams-for-linux ]; };
 }
